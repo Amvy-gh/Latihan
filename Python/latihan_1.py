@@ -11,3 +11,8 @@ print(a * b)  # Perkalian
 print(a / b)  # Pembagian
 print(a % b)  # Modulus
 print(a ** b) # Pangkat
+
+
+if(a>b):
+    print("a lebih besar")
+else: print("b lebih besar")
