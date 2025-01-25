@@ -17,7 +17,7 @@
 
   <script>
     document.getElementById("formPengguna").addEventListener("submit", function(event) {
-      event.preventDefault(); // Mencegah form untuk reload halaman
+      event.preventDefault();
       let nama = document.getElementById("nama").value;
       let email = document.getElementById("email").value;
       document.getElementById("hasil").innerHTML = `Nama Anda: ${nama}<br>Email Anda: ${email}`;
