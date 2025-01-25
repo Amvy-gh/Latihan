@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        #calculator {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2980b9;
+            box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2c3e50;
+        }
+
+        #result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            #calculator {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h2>Kalkulator Sederhana</h2>
+        <div class="form-group">
+            <label for="num1">Angka Pertama</label>
+            <input type="number" id="num1" placeholder="Masukkan angka pertama">
+        </div>
+        <div class="form-group">
+            <label for="num2">Angka Kedua</label>
+            <input type="number" id="num2" placeholder="Masukkan angka kedua">
+        </div>
+        <div class="form-group">
+            <label for="operation">Operasi</label>
+            <select id="operation">
+                <option value="add">Tambah (+)</option>
+                <option value="subtract">Kurang (-)</option>
+                <option value="multiply">Kali (×)</option>
+                <option value="divide">Bagi (÷)</option>
+            </select>
+        </div>
+        <button onclick="calculate()">Hitung</button>
+        <div id="result">Hasil: </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Input tidak valid";
+            } else {
+                switch (operation) {
+                    case "add":
+                        result = num1 + num2;
+                        break;
+                    case "subtract":
+                        result = num1 - num2;
+                        break;
+                    case "multiply":
+                        result = num1 * num2;
+                        break;
+                    case "divide":
+                        result = num2 !== 0 ? num1 / num2 : "Tidak bisa membagi dengan nol";
+                        break;
+                    default:
+                        result = "Operasi tidak valid";
+                }
+            }
+
+            document.getElementById('result').innerText = `Hasil: ${result}`;
+        }
+    </script>
+</body>
+</html>
