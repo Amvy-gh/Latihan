@@ -1,0 +1,20 @@
+h1{
+    text-align: center;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+    gap: 5pc;
+}
+
+ul li {
+    list-style: none;
+}
+
+#photo img{
+    width: 200px;
+    height: 300px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
