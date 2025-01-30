@@ -1,4 +1,4 @@
-h1{
+#judul h1{
     text-align: center;
 }
 
@@ -12,9 +12,24 @@ ul li {
     list-style: none;
 }
 
+#body {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+}
+#photo {
+    flex: 0 0 auto;
+}
+
 #photo img{
     width: 200px;
     height: 300px;
     margin-left: 10px;
     margin-top: 10px;
+}
+
+#container {
+    position: absolute;
+    width: 100%;
+    text-align: center;
 }
