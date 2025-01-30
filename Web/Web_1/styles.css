@@ -12,13 +12,10 @@ ul li {
     list-style: none;
 }
 
-#body {
+#context {
     position: relative;
     display: flex;
     justify-content: flex-start;
-}
-#photo {
-    flex: 0 0 auto;
 }
 
 #photo img{
@@ -32,4 +29,27 @@ ul li {
     position: absolute;
     width: 100%;
     text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+#icon {
+    justify-content: center;
+    gap: 10px;
+    display: flex;
+}
+
+#icon i{
+    gap: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: transparent;
+    font-size: 24px;
 }
