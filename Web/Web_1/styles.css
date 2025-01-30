@@ -1,14 +1,21 @@
-#judul h1{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+judul h1{
     text-align: center;
 }
 
-ul{
+#navbar ul{
     display: flex;
     justify-content: center;
     gap: 5pc;
 }
 
-ul li {
+#navbar ul li {
     list-style: none;
 }
 
@@ -31,10 +38,6 @@ ul li {
     text-align: center;
 }
 
-footer {
-    text-align: center;
-}
-
 #icon {
     justify-content: center;
     gap: 10px;
@@ -52,4 +55,25 @@ footer {
     border-radius: 50%;
     background-color: transparent;
     font-size: 24px;
+}
+
+#nav-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+#nav-footer ul li{
+    list-style: none;
+}
+
+#license{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: black;
+    width: 100%;
+    height: 50px;
 }
