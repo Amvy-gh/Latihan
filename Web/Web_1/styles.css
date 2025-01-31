@@ -40,11 +40,70 @@ hr{
 }
 
 #navbar ul li a{
-    font-family: "Oswald", sans-serif;
+    font-family: 'Playfair Display', serif;
     font-optical-sizing: auto;
     font-style: normal;
     text-decoration: none;
     color: #FFFFFF;
+    font-weight: bold;
+}
+
+#home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('src/image_6.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;   
+    padding: 30px;
+    border-radius: 10px;
+}
+
+
+.hero h1 {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #c0392b;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: #e74c3c;
 }
 
 #context {
@@ -57,24 +116,24 @@ hr{
 
 #isi{
     color: #333333;
-    padding: 45px 10px 0 10px;
+    padding: 55px 10px 0 10px;
+    text-align: justify;
 }
 
 #photo img{ 
+    border-radius: 4px;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
     width: 200px;
     height: 300px;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 #container{
     position: absolute;
     width: 100%;
     text-align: center;
-}
-
-#container p{
-    color: #333333;
-    margin-bottom: 10px;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
 
 #bawah{
