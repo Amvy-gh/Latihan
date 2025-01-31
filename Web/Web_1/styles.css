@@ -2,12 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scrollbar: none;
-}   
+}
 
 hr{
     width: 100%;
-    border:1px solid black;
+    border:1px solid #E0E0E0;
 }
 
 #judul h1 {
@@ -18,15 +17,15 @@ hr{
     text-align: center;
     font-size: 3em;
     padding: 15px;
-    background: linear-gradient(45deg, #1100ff, #0088ff);
+    background: #1A1A1A;
     /* box-shadow: offsetX offsetY blurRadius spreadRadius color; rgba(0, 0, 0, 0.2) → Warna hitam dengan transparansi 20%*/
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
     /* text-shadow: offsetX offsetY blurRadius color; rgba(0, 0, 0, 0.3) → Warna hitam dengan transparansi 30% */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
 }
 
 #navbar {
-    background: linear-gradient(45deg, #07006f, #003666);
+    background-color: #232323;
     padding: 10px;
 }
 
@@ -52,24 +51,36 @@ hr{
     position: relative;
     display: flex;
     justify-content: flex-start;
-    padding: 10px 0 10px 0;
+    padding: 10px 0 5px 0;
+    background: #F5F5F5;
 }
 
-#photo img{
+#isi{
+    color: #333333;
+    padding: 45px 10px 0 10px;
+}
+
+#photo img{ 
     width: 200px;
     height: 300px;
     margin-left: 10px;
 }
 
-#container {
+#container{
     position: absolute;
     width: 100%;
     text-align: center;
 }
 
+#container p{
+    color: #333333;
+    margin-bottom: 10px;
+}
+
 #bawah{
-    background-color: black !important;
-    margin: 20px 0 20px 0;
+    background-color: #1A1A1A !important;
+    padding-top : 40px;
+    padding-bottom: 25px;
 }
 
 #icon {
@@ -83,12 +94,17 @@ hr{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
-    border: 2px solid black;
+    width: 45px;
+    height: 45px;
+    border: none;
     border-radius: 50%;
-    background-color: transparent;
+    background-color: #333333;
+    color: #FFFFFF;
     font-size: 24px;
+}
+
+#nav-footer{
+    padding-top: 20px;
 }
 
 #nav-footer ul{
@@ -106,14 +122,15 @@ hr{
     text-decoration: none;
     font-family: "Quicksand", sans-serif;
     font-weight: 500;
+    color: #CCCCCC;
 }
 
 #license{
     justify-content: center;
     display: flex;
     align-items: center;
-    color: white;
-    background-color: black;
+    color: #999999;
+    background-color: #111111;
     width: 100%;
     height: 50px;
 }
