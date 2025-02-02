@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kalkulator with JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
     <script type="module" src="script.js"></script>
 </head>
 <body> 
+
     <hr>
     <header>
         <h2>Kalkulator with JavaScript</h2>
@@ -20,8 +21,37 @@
         </nav>
     </header>
     <hr>
+
     <main>
-        <p>Kalkulator sederhana</p>
+        <div class="calculator">
+            <h2>Kalkulator</h2>
+            <input type="text" id="display" disabled>
+
+            <div class="buttons">
+                <button class="btn" onclick="appendValue('7')">7</button>
+                <button class="btn" onclick="appendValue('8')">8</button>
+                <button class="btn" onclick="appendValue('9')">9</button>
+                <button class="btn operator" onclick="appendValue('/')">/</button>
+
+                <button class="btn" onclick="appendValue('4')">4</button>
+                <button class="btn" onclick="appendValue('5')">5</button>
+                <button class="btn" onclick="appendValue('6')">6</button>
+                <button class="btn operator" onclick="appendValue('*')">*</button>
+
+                <button class="btn" onclick="appendValue('1')">1</button>
+                <button class="btn" onclick="appendValue('2')">2</button>
+                <button class="btn" onclick="appendValue('3')">3</button>
+                <button class="btn operator" onclick="appendValue('-')">-</button>
+
+                <button class="btn" onclick="appendValue('0')">0</button>
+                <button class="btn" onclick="appendValue('.')">.</button>
+                <button class="btn equal" onclick="calculateResult()">=</button>
+                <button class="btn operator" onclick="appendValue('+')">+</button>
+
+                <button class="btn clear" onclick="clearDisplay()">C</button>
+            </div>
+        </div>
     </main>
+
 </body>
 </html>
