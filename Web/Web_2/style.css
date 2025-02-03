@@ -7,7 +7,7 @@
 
 hr {
     width: 100%;
-    border:1px solid #050505;
+    border:2px solid white;
 }
 
 header{
@@ -21,7 +21,7 @@ header{
 h2{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2em;
-    color: #33ffd8;
+    color: #ffffff;
     -webkit-text-stroke: 1px black;
     text-shadow: 1px 2px rgb(0, 0, 0);
 
@@ -30,13 +30,13 @@ h2{
 nav ul {
     display: flex;
     list-style: none;
-    gap: 5pc;
+    gap: 10px;
     justify-content: flex-end;
 }
 
 nav ul li a{
     text-decoration: none;
-    color: #33ffd8;
+    color: #ffffff;
     font-size: 17px;
     text-shadow: 
     -1px -1px 0 black,  
@@ -59,6 +59,7 @@ nav ul li a{
     background: #3a4452;
     padding: 20px;
     border-radius: 10px;
+    border: 2px solid white;
 }
 
 .calculator form input{
@@ -80,7 +81,9 @@ form .display{
     justify-content: flex-end;
     margin: 20px 0;
     border: none;
+    border-radius: 7px;
     color: white;
+    border: 1px solid white;
 }
 
 
