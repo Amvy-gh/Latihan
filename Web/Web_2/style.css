@@ -2,22 +2,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+hr {
+    width: 100%;
+    border:1px solid #050505;
 }
 
 header{
     display: flex;
-    justify-content: space-between;  
+    justify-content: space-between;
     align-items: center;
     padding: 20px 10px 20px 10px;
-    background-color: bisque;
+    background-color:#3a4452;
 }
 
 h2{
-    font-family: 'Courier New', Courier, monospace;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2em;
-    color: white;
+    color: #33ffd8;
     -webkit-text-stroke: 1px black;
-    text-shadow: 1px 2px white;
+    text-shadow: 1px 2px rgb(0, 0, 0);
 
 }
 
@@ -30,4 +36,65 @@ nav ul {
 
 nav ul li a{
     text-decoration: none;
+    color: #33ffd8;
+    font-size: 17px;
+    text-shadow: 
+    -1px -1px 0 black,  
+     1px -1px 0 black,  
+    -1px  1px 0 black,  
+     1px  1px 0 black;
+
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #e3f9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator{
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.calculator form input{
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), -5px -5px 15px rgba(0, 0, 0, 0.616);
+    background: transparent;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form .display{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+    border: none;
+    color: white;
+}
+
+
+form .display input{
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+
+form input.equal{
+    width: 145px;
+}
+
+form input.operator{
+    color: #33ffd8;
 }
