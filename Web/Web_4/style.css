@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hr{
+    border-color: white;
+}
+
+header {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    height: 83px;
+}
+
+header h1 {
+    margin-left: 40px;
+    margin-top: 10px;
+    font: arial-bold;
+    font-size: 36px;
+    justify-content: centers;
+    align-items: center;
+}
+
+header nav cite{
+    display: flex;
+}
