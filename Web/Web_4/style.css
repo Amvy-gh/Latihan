@@ -38,3 +38,13 @@ header h3{
     height: 60px;
 }
 
+main{
+    display: flex;
+    margin: 40px;
+}
+
+.profile {
+    display: grid;
+    height: 400px;
+    width: 400px;
+}
