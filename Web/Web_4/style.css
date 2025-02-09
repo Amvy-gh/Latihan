@@ -4,25 +4,37 @@
     box-sizing: border-box;
 }
 
-hr{
-    border-color: white;
-}
-
 header {
     display: flex;
+    justify-content: space-between;
     background-color: rgb(255, 255, 255);
-    height: 83px;
-}
-
-header h1 {
-    margin-left: 40px;
-    margin-top: 10px;
-    font: arial-bold;
-    font-size: 36px;
-    justify-content: centers;
     align-items: center;
+    padding: 15px 40px;
+    height: auto;
+    /* offsetX offsetY blur-radius spread-radius color; */
+    box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
-header nav cite{
+.tag-profile {
     display: flex;
+    flex-direction: column;
 }
+
+header h1 {     
+    font-size: 36px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+header h3{
+    font-size: 18px;
+    color: black;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+}
+
