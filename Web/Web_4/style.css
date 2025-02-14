@@ -48,3 +48,13 @@ main{
     height: 400px;
     width: 400px;
 }
+
+.introduce{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.introduce p{
+}
