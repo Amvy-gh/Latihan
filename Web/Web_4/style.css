@@ -50,11 +50,25 @@ main{
 }
 
 .introduce{
-    margin-left: 20px;
+    margin-left: 55px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .introduce p{
+    font-size:25px;
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+.button{
+    background-color: #00C774;
+    color: white;
+    margin-top: 20px;
+    width: 150px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    font: italic 20px arial;
 }
