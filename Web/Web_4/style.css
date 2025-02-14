@@ -73,3 +73,16 @@ header h3{
     border-radius: 5px;
     font: italic 20px arial;
 }
+
+.route ul{
+    list-style: none;
+}
+
+.route ul li{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.route ul li a{
+    text-decoration: none;
+}
