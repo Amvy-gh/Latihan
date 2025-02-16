@@ -76,7 +76,7 @@ header h3{
 
 .route{
     display: flex;
-    height: 50px !important;
+    height: 100px !important;
     width: 100%;
     height: auto;
     background-color: rgb(55, 55, 61);
@@ -92,7 +92,7 @@ header h3{
 .route ul{
     list-style: none;
     display: flex;
-    gap: 5pc;
+    gap: 7pc;
     justify-content: center !important;
 }
 
@@ -103,6 +103,7 @@ header h3{
 .route ul li a{
     text-decoration:underline;
     color: white;
+    font-size: 30px;
 }
 
 .main_course{
