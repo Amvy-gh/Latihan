@@ -76,7 +76,7 @@ header h3{
 
 .route{
     display: flex;
-    height: 100px !important;
+    height: 110px !important;
     width: 100%;
     height: auto;
     background-color: rgb(55, 55, 61);
@@ -92,12 +92,15 @@ header h3{
 .route ul{
     list-style: none;
     display: flex;
-    gap: 7pc;
     justify-content: center !important;
+    gap: 5pc;
 }
 
 .route ul li{
+    display: flex;
     font-size: 20px;
+    justify-content: center;
+    align-items: center !important;
 }
 
 .route ul li a{
@@ -106,6 +109,37 @@ header h3{
     font-size: 30px;
 }
 
+.route ul li a:hover{
+    color: rgb(0, 197, 0);
+}
+
 .main_course{
     display: flex;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+}
+
+.main_course{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5pc;
+}
+
+.main_course_1{
+
+}
+
+.main_course_2{
+
+}
+
+.main_course_3{
+
 }
