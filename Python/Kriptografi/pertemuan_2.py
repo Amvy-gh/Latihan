@@ -25,8 +25,8 @@ def caesar_decrypt(ciphertext, shift):
     return caesar_encrypt(ciphertext, -shift)  # Dekripsi cukup membalikkan shift
 
 # Contoh penggunaan:
-plaintext = "Anjes Bermana"
-shift = 3  # Pergeseran huruf
+plaintext = input("Masukkan plaintext = ")
+shift = int(input("Masukkan shift yang diinginkan = "))  # Pergeseran huruf
 
 # Enkripsi
 ciphertext = caesar_encrypt(plaintext, shift)
@@ -39,6 +39,6 @@ print(f"Teks Dekripsi: {decrypted_text}")
 
 # Mencoba semua kemungkinan shift untuk brute-force dekripsi
 print("\nMencoba semua kemungkinan kunci (brute-force dekripsi):")
-ciphertext_unknown = "Dqmhv Ehupdqd"  # Teks terenkripsi yang ingin kita pecahkan
+ciphertext_unknown = input("Masukkan Ciphertext = ")  # Teks terenkripsi yang ingin kita pecahkan
 for k in range(1, 26):
     print(f"Shift {k}: {caesar_decrypt(ciphertext_unknown, k)}")
