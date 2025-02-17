@@ -176,11 +176,15 @@ header h3{
     margin: 40px;
 }
 
-.education h1{
+.education_title{
     text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding-top: 40px;
 }
 
 .grid_container{
+    font-size: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
