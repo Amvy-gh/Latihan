@@ -48,6 +48,7 @@ header h3{
     display: grid;
     height: 400px;
     width: 400px;
+    border: 5px solid black;
 }
 
 .introduce{
@@ -168,4 +169,22 @@ header h3{
 
 .main_course3{
     border: 1px solid black;
+}
+
+.education{
+    background-color: #f2f2f2;
+    margin: 40px;
+}
+
+.education h1{
+    text-align: center;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
 }
