@@ -206,3 +206,17 @@ footer{
 footer h2{
     color: white;
 }
+
+#title_about{
+    background-color: rgb(62, 62, 62); 
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
