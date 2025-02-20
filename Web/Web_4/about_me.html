@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>About Me - Anjes Bermana</title>
+    <link rel="stylesheet" href="style_about.css">
 </head>
 <body>
     <header>
@@ -16,45 +16,125 @@
         </div>
         <img src="src/icon_gmail.png" alt="gmail" class="icon">
     </header>
+    
     <main>
-        <h2 id="title_about">
-            Data Mahasiswa
-        </h2>
-        <h1>Data Diri</h1>
-        <table>
-            <tr>
-                <th>Nama</th>
-                <td>Anjes Bermana</td>
-            </tr>
-            <tr>
-                <th>Perguruan Tinggi</th>
-                <td>Institut Teknologi Sumatera</td>
-            </tr>
-            <tr>
-                <th>Program Studi</th>
-                <td>Teknik Informatika</td>
-            </tr>
-            <tr>
-                <th>Jenis Kelamin</th>
-                <td>Laki-laki</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>Mahasiswa Aktif</td>
-            </tr>
-            <tr>
-                <th>Pendidikan tertinggi</th>
-                <td>S1</td>
-            </tr>
-            <tr>
-                <th>NIM</th>
-                <td>122140190</td>
-            </tr>
-            <tr>
-                <th>Kelompok Keilmuan</th>
-                <td>Rekayasa Perangkat Lunak dan Sistem Informasi</td>
-            </tr>
-        </table>
-    </main>  
+        <div class="nav-tabs">
+            <a href="#data-diri" class="nav-tab active">Data Diri</a>
+            <a href="#pengalaman-hibah" class="nav-tab">Pengalaman Hibah</a>
+            <a href="#mata-kuliah" class="nav-tab">Mata Kuliah yang Diampu</a>
+        </div>
+
+        <div id="data-diri" class="content active">
+            <h2 id="title_about">Data Mahasiswa</h2>
+            <table>
+                <tr>
+                    <th>Nama</th>
+                    <td>Anjes Bermana</td>
+                </tr>
+                <tr>
+                    <th>Perguruan Tinggi</th>
+                    <td>Institut Teknologi Sumatera</td>
+                </tr>
+                <tr>
+                    <th>Program Studi</th>
+                    <td>Teknik Informatika</td>
+                </tr>
+                <tr>
+                    <th>Jenis Kelamin</th>
+                    <td>Laki-laki</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>Mahasiswa Aktif</td>
+                </tr>
+                <tr>
+                    <th>Pendidikan tertinggi</th>
+                    <td>S1</td>
+                </tr>
+                <tr>
+                    <th>NIM</th>
+                    <td>122140190</td>
+                </tr>
+                <tr>
+                    <th>Kelompok Keilmuan</th>
+                    <td>Rekayasa Perangkat Lunak dan Sistem Informasi</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="pengalaman-hibah" class="content">
+            <h2 id="title_about">Pengalaman Hibah</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Hibah</th>
+                        <th>Jenis</th>
+                        <th>Tahun</th>
+                        <th>Sebagai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Rancang Bangun Sistem Kendali Kendaraan Kampus Itera (Keran Kitera) Berbasis Automatic Number Plate Recognition dan Long-Range RFID</td>
+                        <td>Penelitain Penugasan ITERA</td>
+                        <td>2023</td>
+                        <td>Ketua</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Dasar-dasar Pemrograman Web menggunakan Framework Python Pyramid dan React Js</td>
+                        <td>Buku Keilmuan ITERA</td>
+                        <td>2023</td>
+                        <td>Ketua</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Building Monitoring System Berbasis IoT</td>
+                        <td>Kedaireka</td>
+                        <td>2023</td>
+                        <td>Anggota</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Pengembangan Model Deteksi Perlengkapan Pengendara Bermotor Berbasis Citra: Evaluasi Akurasi Dan Analisis Terhadap Keselamatan Berkendara (Studi Kasus: Gerbang Utama Itera)</td>
+                        <td>JTPI ITERA</td>
+                        <td>2023</td>
+                        <td>Ketua</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="mata-kuliah" class="content">
+            <h2 id="title_about">Mata Kuliah yang Diampu</h2>
+            <p>Daftar mata kuliah akan ditampilkan di sini</p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const contentId = tab.getAttribute('href').substring(1);
+                    document.getElementById(contentId).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
