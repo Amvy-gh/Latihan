@@ -58,7 +58,7 @@ def write_to_file(filename, text):
     with open(filename, 'w') as file:
         file.write(text)
 
-key = "SECURITY"
+key = input("Masukkan key")
 plaintext = read_from_file("plaintext.txt")
 ciphertext = playfair_encrypt(plaintext, key)
 write_to_file("ciphertext.txt", ciphertext)
