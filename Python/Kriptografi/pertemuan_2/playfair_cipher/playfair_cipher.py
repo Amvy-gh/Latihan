@@ -35,20 +35,20 @@ def playfair_encrypt(text, key):
 
 def playfair_decrypt(text, key):
     matrix = create_playfair_matrix(key)
-    deskripsi_text = ""
+    dekripsi_text = ""
     for i in range(0, len(text), 2):
         a, b = text[i], text[i+1]
         row_a, col_a = find_position(matrix, a)
         row_b, col_b = find_position(matrix, b)
         
         if row_a == row_b:
-            deskripsi_text += matrix[row_a][(col_a-1)%6] + matrix[row_b][(col_b-1)%6]
+            dekripsi_text += matrix[row_a][(col_a-1)%6] + matrix[row_b][(col_b-1)%6]
         elif col_a == col_b:
-            deskripsi_text += matrix[(row_a-1)%6][col_a] + matrix[(row_b-1)%6][col_b]
+            dekripsi_text += matrix[(row_a-1)%6][col_a] + matrix[(row_b-1)%6][col_b]
         else:
-            deskripsi_text += matrix[row_a][col_b] + matrix[row_b][col_a]
+            dekripsi_text += matrix[row_a][col_b] + matrix[row_b][col_a]
     
-    return deskripsi_text
+    return dekripsi_text
 
 def read_from_file(filename):
     with open(filename, 'r') as file:
@@ -65,6 +65,6 @@ write_to_file("ciphertext.txt", ciphertext)
 print("Enkripsi selesai! Hasil disimpan di ciphertext.txt")
 
 ciphertext = read_from_file("ciphertext.txt")
-deskripsi_text = playfair_decrypt(ciphertext, key)
-write_to_file("deskripsi.txt", deskripsi_text)
-print("Dekripsi selesai! Hasil disimpan di deskripsi.txt")
+dekripsi_text = playfair_decrypt(ciphertext, key)
+write_to_file("dekripsi.txt", dekripsi_text) 
+print("Dekripsi selesai! Hasil disimpan di dekripsi.txt")
