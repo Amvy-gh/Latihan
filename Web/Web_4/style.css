@@ -184,7 +184,7 @@ header h3{
     width: 100%;
     max-width: 1182px;
     margin: 60px auto 0 auto;
-    padding: 80px;
+    padding: 60px;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
@@ -214,7 +214,7 @@ header h3{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 10px;
+    padding-top: 150px;
 }
 
 .icon_education {
@@ -257,7 +257,7 @@ header h3{
 footer{
     background-color: rgb(62, 62, 62);
     display: flex;
-    margin: 0 40px 0 40px;
+    margin: 0 40px 20px 40px;
 }
 
 footer h2{
@@ -265,18 +265,18 @@ footer h2{
     padding: 15px;
 }
 
-#title_about{
-    background-color: rgb(62, 62, 62); 
-    color: white;
-    text-align: center;
-    align-items: center;
+.icon_sosmed{
+    display: flex;
     justify-content: center;
-    padding: 20px 0 20px 0;
-    margin: 20px 0 20px 0;
+    align-items: center;
 }
 
-table, th, td{
-    border: 1px solid black;
+.icon_sosmed img{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 /* Desktop view (greater than 768px) */
