@@ -182,9 +182,9 @@ header h3{
 
 .education {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1182px;
+    margin: 60px auto 0 auto;
+    padding: 80px;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
