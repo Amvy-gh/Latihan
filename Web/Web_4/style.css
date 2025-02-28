@@ -134,6 +134,7 @@ header h3{
 
 .main_course{
     display: flex;
+    min-height: 400px;
 }
 
 .icon{
