@@ -151,7 +151,7 @@ header h3{
     justify-content: center;
     align-items: stretch;
     text-align: center;
-    gap: 5pc;
+    gap: 2pc;
     margin: 0 40px 0 40px;
 }
 
@@ -180,31 +180,78 @@ header h3{
     border: 1px solid black;
 }
 
-.education{
-    background-color: #f2f2f2;
-    margin: 40px 40px 0px 40px;
-}
-
-.education_title{
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
-    padding-top: 40px;
-}
-
-.grid_container{
-    font-size: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 1000px;
-    margin: auto;
+.education {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
 }
 
-.icon_education{
-    height: 50px;
-    width: 50px;
+.education_title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.education_item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 15px 0;
+}
+
+.logo_container {
+    flex: 0 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.icon_education {
+    width: 85px;
+    height: auto;
+}
+
+.education_text {
+    flex: 1;
+}
+
+.education_text h2 {
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.education_text figcaption {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.education_text p {
+    margin: 0;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.education_text ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.education_text li {
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
 
 footer{
@@ -230,4 +277,34 @@ footer h2{
 
 table, th, td{
     border: 1px solid black;
+}
+
+/* Desktop view (greater than 768px) */
+@media (min-width: 768px) {
+    .grid_container {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+        row-gap: 40px;
+    }
+    
+    .education_item {
+        padding: 0;
+    }
+}
+
+/* For better alignment with the provided design */
+@media (max-width: 767px) {
+    .education_item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .education_text ul {
+        text-align: left;
+    }
+    
+    .logo_container {
+        margin-bottom: 15px;
+    }
 }
