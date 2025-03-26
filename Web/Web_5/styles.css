@@ -10,17 +10,11 @@ body {
     font-family: 'Orbitron', sans-serif;
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #00ffff;
-    display: flex;
+    display: flex;  
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-y: scroll;
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
-}
-
-body::-webkit-scrollbar {
-    display: none;
+    overflow: hidden;
 }
 
 .space-background {

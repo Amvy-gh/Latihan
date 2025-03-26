@@ -132,10 +132,13 @@ function calculateLeverage() {
     }
 
     leverageWarningElement.innerHTML = `
-        ⚠️ ${riskDescription}!<br>
-        Posisi Long: Likuidasi jika harga turun ${liquidationRisk}% (ke ${liquidationPrice.toFixed(2)} IDR)<br>
-        Posisi Short: Likuidasi jika harga naik ${liquidationRisk}% (ke ${(assetPrice * (1 + liquidationRisk / 100)).toFixed(2)} IDR)
-    `;
+    <strong>⚠️ ${riskDescription}!</strong><br><br>
+    🔹 <strong>Posisi Long:</strong> Terlikuidasi jika harga turun <strong>${liquidationRisk}%</strong><br>
+       ➝ Harga likuidasi: <strong>${formatNumber(liquidationPrice.toFixed(2))} IDR</strong><br><br>
+    🔹 <strong>Posisi Short:</strong> Terlikuidasi jika harga naik <strong>${liquidationRisk}%</strong><br>
+       ➝ Harga likuidasi: <strong>${formatNumber((assetPrice * (1 + liquidationRisk / 100)).toFixed(2))} IDR</strong>
+`;
+
 }
 
 // Format input angka
