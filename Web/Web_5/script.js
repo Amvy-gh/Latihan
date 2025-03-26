@@ -114,7 +114,8 @@ function calculateLeverage() {
     // Hitung risiko likuidasi
     let assetPrice = usdAmount * exchangeRate;
     let liquidationRisk = (100 / leverage).toFixed(2);
-    let liquidationPrice = assetPrice * (1 - (liquidationRisk / 100));
+    let liquidationPriceLong = assetPrice * (1 - (liquidationRisk / 100));
+    let liquidationPriceShort = assetPrice * (1 + (liquidationRisk / 100));
 
     let riskDescription = "";
     if (leverage <= 5) {
@@ -132,14 +133,18 @@ function calculateLeverage() {
     }
 
     leverageWarningElement.innerHTML = `
-    <strong>⚠️ ${riskDescription}!</strong><br><br>
-    🔹 <strong>Posisi Long:</strong> Terlikuidasi jika harga turun <strong>${liquidationRisk}%</strong><br>
-       ➝ Harga likuidasi: <strong>${formatNumber(liquidationPrice.toFixed(2))} IDR</strong><br><br>
-    🔹 <strong>Posisi Short:</strong> Terlikuidasi jika harga naik <strong>${liquidationRisk}%</strong><br>
-       ➝ Harga likuidasi: <strong>${formatNumber((assetPrice * (1 + liquidationRisk / 100)).toFixed(2))} IDR</strong>
-`;
+        <strong>⚠️ ${riskDescription}!</strong><br><br>
+        🔹 <strong>Posisi Long:</strong> Terlikuidasi jika harga turun <strong>${liquidationRisk}%</strong><br>
+           ➝ Harga likuidasi: <strong>${formatNumber(liquidationPriceLong.toFixed(2))} IDR</strong><br><br>    
+        🔹 <strong>Posisi Short:</strong> Terlikuidasi jika harga naik <strong>${liquidationRisk}%</strong><br>
+           ➝ Harga likuidasi: <strong>${formatNumber(liquidationPriceShort.toFixed(2))} IDR</strong></br>
+    `;
 
+    if (leverage > 50) {
+        leverageWarningElement.innerHTML += "<br><strong style='color:red;'>🚨 Hati-hati! Leverage tinggi sangat berisiko!</strong></br></br>";
+    }
 }
+
 
 // Format input angka
 function formatInput(inputElement) {
