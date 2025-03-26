@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Konversi USD Antariksa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="space-background" id="starField"></div>
+    
+    <div class="converter-container">
+        <h1>🚀 USD ke Rupiah Antariksa 🌍</h1>
+        
+        <div class="rate-display" id="rate">Memuat kurs...</div>
+        
+        <div class="input-container">
+            <input type="text" id="usd" placeholder="Masukkan USD" oninput="convert()">
+        </div>
+        
+        <div class="result" id="result">Rp 0</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
