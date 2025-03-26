@@ -1,6 +1,6 @@
 let exchangeRate = 0;
 
-// Fungsi untuk membuat bintang-bintang animasi
+// Fungsi untuk membuat bintang animasi
 function createStars() {
     const starField = document.getElementById('starField');
     for (let i = 0; i < 100; i++) {
@@ -28,16 +28,15 @@ async function fetchExchangeRate() {
     }
 }
 
-// Format angka biar rapi
+// Format angka
 function formatNumber(number) {
     return new Intl.NumberFormat("id-ID").format(number);
 }
 
-// Fungsi konversi USD ke IDR
+// Konversi USD ke IDR
 function convert() {
     let usdElement = document.getElementById("usd1");
     formatInput(usdElement);
-
     let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
     let resultElement = document.getElementById("result");
 
@@ -48,16 +47,13 @@ function convert() {
 
     const idrAmount = usdAmount * exchangeRate;
     resultElement.innerText = `Rp ${formatNumber(idrAmount)}`;
-
-    // Panggil fungsi untuk menghitung kenaikan berdasarkan persentase
     calculatePercentage();
 }
 
-// Fungsi untuk konversi USD2 dan memperbarui nilai leverage
+// Konversi USD2
 function convertUSD2() {
     let usdElement = document.getElementById("usd2");
     formatInput(usdElement);
-
     let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
 
     if (usdAmount > 0) {
@@ -66,18 +62,16 @@ function convertUSD2() {
         document.getElementById("increase-result").dataset.base = 0;
     }
 
-    calculatePercentage(); 
+    calculatePercentage();
 }
 
-// Fungsi untuk menghitung kenaikan berdasarkan persentase
+// Hitung kenaikan berdasarkan persentase
 function calculatePercentage() {
     let percentageElement = document.getElementById("percentage");
     formatInput(percentageElement);
-
     let percentageValue = parseFloat(percentageElement.value.replace(/\./g, "").replace(",", ".")) || 0;
     let baseAmount = parseFloat(document.getElementById("increase-result").dataset.base) || 0;
-
-    const increaseResultElement = document.getElementById("increase-result");
+    let increaseResultElement = document.getElementById("increase-result");
 
     if (baseAmount === 0) {
         increaseResultElement.innerText = "Jika Naik X%: Rp 0";
@@ -88,11 +82,10 @@ function calculatePercentage() {
     increaseResultElement.innerText = `Jika Naik ${percentageValue}%: Rp ${formatNumber(increasedAmount)}`;
 }
 
-// Fungsi untuk menghitung leverage
+// Hitung leverage dan risiko likuidasi
 function calculateLeverage() {
     let usdElement = document.getElementById("usd2");
     let leverageElement = document.getElementById("leverage");
-
     formatInput(usdElement);
     formatInput(leverageElement);
 
@@ -115,19 +108,42 @@ function calculateLeverage() {
 
     const leveragedAmount = usdAmount * exchangeRate * leverage;
     leverageResultElement.innerText = `Total Exposure: Rp ${formatNumber(leveragedAmount)}`;
-
     document.getElementById("increase-result").dataset.base = leveragedAmount;
-
     calculatePercentage();
+
+    // Hitung risiko likuidasi
+    let assetPrice = usdAmount * exchangeRate;
+    let liquidationRisk = (100 / leverage).toFixed(2);
+    let liquidationPrice = assetPrice * (1 - (liquidationRisk / 100));
+
+    let riskDescription = "";
+    if (leverage <= 5) {
+        riskDescription = "Risiko Rendah";
+    } else if (leverage <= 25) {
+        riskDescription = "Risiko Sedang";
+    } else if (leverage <= 50) {
+        riskDescription = "Risiko Tinggi";
+    } else if (leverage <= 75) {
+        riskDescription = "Risiko Sangat Tinggi";
+    } else if (leverage <= 100) {
+        riskDescription = "Risiko Ekstrem";
+    } else {
+        riskDescription = "Risiko Ultra Tinggi";
+    }
+
+    leverageWarningElement.innerHTML = `
+        ⚠️ ${riskDescription}!<br>
+        Posisi Long: Likuidasi jika harga turun ${liquidationRisk}% (ke ${liquidationPrice.toFixed(2)} IDR)<br>
+        Posisi Short: Likuidasi jika harga naik ${liquidationRisk}% (ke ${(assetPrice * (1 + liquidationRisk / 100)).toFixed(2)} IDR)
+    `;
 }
 
-// Fungsi untuk memformat input angka
+// Format input angka
 function formatInput(inputElement) {
     let value = inputElement.value.replace(/[^0-9,]/g, "");
     let parts = value.split(",");
     let integerPart = parts[0].replace(/\./g, "");
     let decimalPart = parts.length > 1 ? "," + parts[1] : "";
-
     integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     inputElement.value = integerPart + decimalPart;
 }
@@ -137,9 +153,3 @@ window.onload = function () {
     fetchExchangeRate();
     createStars();
 };
-
-// Tambahkan event listener untuk input
-document.getElementById("usd1").addEventListener("input", convert);
-document.getElementById("usd2").addEventListener("input", convertUSD2);
-document.getElementById("percentage").addEventListener("input", calculatePercentage);
-document.getElementById("leverage").addEventListener("input", calculateLeverage);

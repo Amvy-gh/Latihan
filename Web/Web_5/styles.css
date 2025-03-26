@@ -14,7 +14,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .space-background {

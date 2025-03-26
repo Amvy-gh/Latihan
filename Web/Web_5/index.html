@@ -1,42 +1,44 @@
-    <!DOCTYPE html>
-    <html lang="id">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kalkulator Konversi USD Antariksa</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="space-background" id="starField"></div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Konversi USD Antariksa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="space-background" id="starField"></div>
+    
+    <div class="converter-container">
+        <h1>🚀 Converter USD ke Rupiah 🌍</h1>
         
-        <div class="converter-container">
-            <h1>🚀 Converter USD ke Rupiah 🌍</h1>
-            
-            <div class="rate-display" id="rate">Memuat kurs...</div>
-            
-            <div class="input-container">
-                <input type="text" id="usd1" placeholder="Masukkan USD" oninput="convert()">
-            </div>
-            
-            <div class="result" id="result">Rp 0</div>
-            
-            <div class="input-container">
-                <input type="text" id="usd2" placeholder="Masukkan USD" oninput="convert()">
-            </div>
-            <div class="input-container percentage-input">
-                <input type="text" id="percentage" placeholder="Masukkan Persentase (%)" oninput="convert()">
-            </div>
-            
-            <div class="increase-result" id="increase-result">Jika Naik X%: Rp 0</div>
-            
-            <div class="input-container leverage-input">
-                <input type="text" id="leverage" placeholder="Masukkan Leverage (1-125)" oninput="calculateLeverage()">
-            </div>
-            
-            <div class="leverage-result" id="leverage-result">Total Exposure: Rp 0</div>
-            <div class="leverage-warning" id="leverage-warning"></div>
+        <div class="rate-display" id="rate">Memuat kurs...</div>
+        
+        <div class="input-container">
+            <input type="text" id="usd1" placeholder="Masukkan USD" oninput="convert()">
         </div>
-
-        <script src="script.js"></script>
-    </body>
-    </html>
+        
+        <div class="result" id="result">Rp 0</div>
+        
+        <div class="input-container">
+            <input type="text" id="usd2" placeholder="Masukkan USD" oninput="convertUSD2()">
+        </div>
+        
+        <div class="input-container leverage-input">
+            <input type="text" id="leverage" placeholder="Masukkan Leverage (1-125)" oninput="calculateLeverage()">
+        </div>
+        
+        <div class="leverage-result" id="leverage-result">Total Exposure: Rp 0</div>
+        
+        <div class="input-container percentage-input">
+            <input type="text" id="percentage" placeholder="Masukkan Persentase (%)" oninput="calculatePercentage()">
+        </div>
+        
+        <div class="increase-result" id="increase-result">Jika Naik X%: Rp 0</div>
+        
+        <div class="leverage-warning" id="leverage-warning"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
