@@ -117,32 +117,12 @@ function calculateLeverage() {
     let liquidationPriceLong = assetPrice * (1 - (liquidationRisk / 100));
     let liquidationPriceShort = assetPrice * (1 + (liquidationRisk / 100));
 
-    let riskDescription = "";
-    if (leverage <= 5) {
-        riskDescription = "Risiko Rendah";
-    } else if (leverage <= 25) {
-        riskDescription = "Risiko Sedang";
-    } else if (leverage <= 50) {
-        riskDescription = "Risiko Tinggi";
-    } else if (leverage <= 75) {
-        riskDescription = "Risiko Sangat Tinggi";
-    } else if (leverage <= 100) {
-        riskDescription = "Risiko Ekstrem";
-    } else {
-        riskDescription = "Risiko Ultra Tinggi";
-    }
-
     leverageWarningElement.innerHTML = `
-        <strong>⚠️ ${riskDescription}!</strong><br><br>
         🔹 <strong>Posisi Long:</strong> Terlikuidasi jika harga turun <strong>${liquidationRisk}%</strong><br>
            ➝ Harga likuidasi: <strong>${formatNumber(liquidationPriceLong.toFixed(2))} IDR</strong><br><br>    
         🔹 <strong>Posisi Short:</strong> Terlikuidasi jika harga naik <strong>${liquidationRisk}%</strong><br>
-           ➝ Harga likuidasi: <strong>${formatNumber(liquidationPriceShort.toFixed(2))} IDR</strong></br>
+           ➝ Harga likuidasi: <strong>${formatNumber(liquidationPriceShort.toFixed(2))} IDR</strong></br></br>
     `;
-
-    if (leverage > 50) {
-        leverageWarningElement.innerHTML += "<br><strong style='color:red;'>🚨 Hati-hati! Leverage tinggi sangat berisiko!</strong></br></br>";
-    }
 }
 
 
