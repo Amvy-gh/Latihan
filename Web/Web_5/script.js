@@ -15,84 +15,131 @@ function createStars() {
     }
 }
 
-// Fungsi untuk mengambil nilai tukar USD ke IDR
+// Ambil nilai tukar USD ke IDR
 async function fetchExchangeRate() {
     try {
         const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
         const data = await response.json();
         exchangeRate = data.rates.IDR;
         document.getElementById("rate").innerText = `1 USD = Rp ${exchangeRate.toLocaleString("id-ID")}`;
-        convert(); // Update konversi saat kurs berubah
     } catch (error) {
         console.error("Gagal mengambil nilai tukar:", error);
         document.getElementById("rate").innerText = "🛰️ Koneksi Terputus!";
     }
 }
 
-// Fungsi untuk memformat angka dengan titik ribuan dan koma desimal
+// Format angka biar rapi
 function formatNumber(number) {
     return new Intl.NumberFormat("id-ID").format(number);
 }
 
-// Fungsi untuk memformat input saat user mengetik
-function formatInput() {
-    let inputElement = document.getElementById("usd");
-    let value = inputElement.value;
-
-    // Hapus karakter selain angka dan koma
-    value = value.replace(/[^0-9,]/g, "");
-
-    // Pisahkan angka utama dan desimal (koma)
-    let parts = value.split(",");
-    let integerPart = parts[0].replace(/\./g, ""); // Hapus titik lama
-    let decimalPart = parts.length > 1 ? "," + parts[1] : ""; // Jika ada desimal, simpan
-
-    // Tambahkan titik ribuan ke angka utama
-    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-    // Gabungkan kembali
-    inputElement.value = integerPart + decimalPart;
-}
-
-// Fungsi untuk mengonversi USD ke IDR dengan input yang sudah diformat
+// Fungsi konversi USD ke IDR
 function convert() {
-    let inputElement = document.getElementById("usd");
-    let value = inputElement.value;
+    let usdElement = document.getElementById("usd1");
+    formatInput(usdElement);
 
-    // Ubah format angka: hapus titik ribuan dan ubah koma ke titik untuk desimal
-    let usdAmount = parseFloat(value.replace(/\./g, "").replace(",", "."));
-    const resultElement = document.getElementById("result");
+    let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+    let resultElement = document.getElementById("result");
 
-    if (isNaN(usdAmount) || usdAmount <= 0) {
+    if (usdAmount <= 0) {
         resultElement.innerText = "Rp 0";
         return;
-    }   
+    }
 
     const idrAmount = usdAmount * exchangeRate;
     resultElement.innerText = `Rp ${formatNumber(idrAmount)}`;
-    
-    // Animasi perubahan hasil
-    resultElement.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-        resultElement.style.transform = 'scale(1)';
-    }, 200);
+
+    // Panggil fungsi untuk menghitung kenaikan berdasarkan persentase
+    calculatePercentage();
 }
 
-// Inisialisasi halaman
-function init() {
-    fetchExchangeRate();
+// Fungsi untuk konversi USD2 dan memperbarui nilai leverage
+function convertUSD2() {
+    let usdElement = document.getElementById("usd2");
+    formatInput(usdElement);
+
+    let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+
+    if (usdAmount > 0) {
+        document.getElementById("increase-result").dataset.base = usdAmount * exchangeRate;
+    } else {
+        document.getElementById("increase-result").dataset.base = 0;
+    }
+
+    calculatePercentage(); 
 }
 
-// Update nilai tukar setiap 5 detik
-setInterval(fetchExchangeRate, 5000);
+// Fungsi untuk menghitung kenaikan berdasarkan persentase
+function calculatePercentage() {
+    let percentageElement = document.getElementById("percentage");
+    formatInput(percentageElement);
 
-// Ambil data pertama kali saat halaman dimuat
-window.onload = init;
+    let percentageValue = parseFloat(percentageElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+    let baseAmount = parseFloat(document.getElementById("increase-result").dataset.base) || 0;
 
+    const increaseResultElement = document.getElementById("increase-result");
+
+    if (baseAmount === 0) {
+        increaseResultElement.innerText = "Jika Naik X%: Rp 0";
+        return;
+    }
+
+    const increasedAmount = baseAmount * (1 + (percentageValue / 100));
+    increaseResultElement.innerText = `Jika Naik ${percentageValue}%: Rp ${formatNumber(increasedAmount)}`;
+}
+
+// Fungsi untuk menghitung leverage
+function calculateLeverage() {
+    let usdElement = document.getElementById("usd2");
+    let leverageElement = document.getElementById("leverage");
+
+    formatInput(usdElement);
+    formatInput(leverageElement);
+
+    let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+    let leverage = parseFloat(leverageElement.value.replace(/\./g, "").replace(",", ".")) || 1;
+
+    const leverageResultElement = document.getElementById("leverage-result");
+    const leverageWarningElement = document.getElementById("leverage-warning");
+
+    if (leverage < 1) leverage = 1;
+    if (leverage > 125) leverage = 125;
+
+    if (usdAmount <= 0) {
+        leverageResultElement.innerText = "Total Exposure: Rp 0";
+        leverageWarningElement.innerText = "";
+        document.getElementById("increase-result").dataset.base = 0;
+        calculatePercentage();
+        return;
+    }
+
+    const leveragedAmount = usdAmount * exchangeRate * leverage;
+    leverageResultElement.innerText = `Total Exposure: Rp ${formatNumber(leveragedAmount)}`;
+
+    document.getElementById("increase-result").dataset.base = leveragedAmount;
+
+    calculatePercentage();
+}
+
+// Fungsi untuk memformat input angka
+function formatInput(inputElement) {
+    let value = inputElement.value.replace(/[^0-9,]/g, "");
+    let parts = value.split(",");
+    let integerPart = parts[0].replace(/\./g, "");
+    let decimalPart = parts.length > 1 ? "," + parts[1] : "";
+
+    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    inputElement.value = integerPart + decimalPart;
+}
+
+// Inisialisasi saat halaman dimuat
 window.onload = function () {
-    createStars();
     fetchExchangeRate();
+    createStars();
 };
 
-// Tambahkan event listener untuk memformat input saat user mengetik
-document.getElementById("usd").addEventListener("input", formatInput);
+// Tambahkan event listener untuk input
+document.getElementById("usd1").addEventListener("input", convert);
+document.getElementById("usd2").addEventListener("input", convertUSD2);
+document.getElementById("percentage").addEventListener("input", calculatePercentage);
+document.getElementById("leverage").addEventListener("input", calculateLeverage);

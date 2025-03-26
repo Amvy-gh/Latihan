@@ -45,7 +45,7 @@ body {
     border-radius: 20px;
     padding: 30px;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
@@ -54,7 +54,6 @@ body {
 }
 
 .converter-container:hover {
-    /* transform: perspective(1000px) rotateY(10deg); */
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
 }
 
@@ -90,6 +89,20 @@ h1 {
     color: #00ffff;
 }
 
+.percentage-input::before {
+    content: '%';
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+}
+
+.leverage-input::before {
+    content: 'x';
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+}
+
 input {
     flex-grow: 1;
     background: transparent;
@@ -108,11 +121,28 @@ input {
     font-size: 1.3rem;
     border: 1px solid #00ffff;
     transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .result:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.increase-result, .leverage-result {
+    background: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #00ffff;
+}
+
+.leverage-warning {
+    color: #ff4500;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 @media (max-width: 480px) {
