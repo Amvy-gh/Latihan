@@ -18,13 +18,16 @@ function createStars() {
 function validateLeverage() {
     let input = document.getElementById("leverage");
     
-    // Hapus semua karakter selain angka
+    // Hapus karakter selain angka
     input.value = input.value.replace(/\D/g, "");
+
+    // Biarkan input kosong agar pengguna bisa menghapus
+    if (input.value === "") return;
 
     let value = parseInt(input.value, 10);
 
-    if (isNaN(value) || value < 1) {
-        input.value = 1;
+    if (value < 1) {
+        input.value = "";  // Izinkan kosong, baru validasi saat unfocus (blur)
     } else if (value > 125) {
         input.value = 125;
     }
