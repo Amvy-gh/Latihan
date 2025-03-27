@@ -33,6 +33,7 @@ function validateLeverage() {
     }
 }
 
+
 // Ambil nilai tukar USD ke IDR
 async function fetchExchangeRate() {
     try {
@@ -157,6 +158,39 @@ function calculateLeverage() {
     `;
 }
 
+// Total Profit
+function calculateProfit() {
+    let usdElement = document.getElementById("usd2");
+    let leverageElement = document.getElementById("leverage");
+    let percentageElement = document.getElementById("percentage");
+
+    formatInput(usdElement);
+    formatInput(leverageElement);
+    formatInput(percentageElement);
+
+    let usdAmount = parseFloat(usdElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+    let leverage = parseFloat(leverageElement.value.replace(/\./g, "").replace(",", ".")) || 1;
+    let percentageValue = parseFloat(percentageElement.value.replace(/\./g, "").replace(",", ".")) || 0;
+
+    let profitResultElement = document.getElementById("profit-result");
+
+    if (!exchangeRate || exchangeRate <= 0) {
+        profitResultElement.innerText = "Total Profit: Rp 0 (Kurs belum dimuat)";
+        return;
+    }
+
+    // 1️⃣ Hitung Total Exposure (Modal * Leverage * Kurs)
+    let totalExposure = usdAmount * leverage * exchangeRate;
+
+    // 2️⃣ Hitung Total Setelah Kenaikan
+    let totalAfterIncrease = totalExposure * (1 + (percentageValue / 100));
+
+    // 3️⃣ Hitung Profit Bersih (Setelah kenaikan - Total Exposure)
+    let totalProfit = totalAfterIncrease - totalExposure;
+
+    // Tampilkan hasilnya
+    profitResultElement.innerText = `📈 Total Profit: Rp ${formatNumber(totalProfit.toFixed(2))}`;
+}
 
 // Format input angka
 function formatInput(inputElement) {
