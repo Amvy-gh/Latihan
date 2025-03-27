@@ -1,13 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+.code-text {
+    font-family: 'Fira Code', monospace;
+    font-weight: 400; 
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #1a1a1a;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #6a6a6a;
+}
 
 * {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a #1a1a1a;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Fira Code', monospace;
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #00ffff;
     display: flex;
@@ -15,6 +45,22 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow:-moz-hidden-unscrollable;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(0, 255, 255, 0.5), 
+        transparent
+    );
+    margin: 40px 0;
+    box-shadow: 
+        0 0 5px rgba(0, 255, 255, 0.3),
+        0 0 10px rgba(0, 255, 255, 0.2);
+    width: 100%;
 }
 
 .space-background {
@@ -41,6 +87,7 @@ body {
 
 .converter-container {
     background: rgba(0, 0, 0, 0.6);
+    margin: 40px 40px;
     border: 2px solid #00ffff;
     border-radius: 20px;
     padding: 30px;
@@ -69,7 +116,7 @@ h1 {
     background: rgba(0, 255, 255, 0.1);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-size: 1rem;
     border: 1px solid #00ffff;
@@ -115,6 +162,16 @@ input {
     outline: none;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .result {
     background: rgba(0, 255, 255, 0.2);
     color: #00ffff;
@@ -123,7 +180,7 @@ input {
     font-size: 1.3rem;
     border: 1px solid #00ffff;
     transition: all 0.3s ease;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .result:hover {
@@ -141,9 +198,9 @@ input {
 }
 
 .leverage-warning {
-    color: #ff4500;
+    color: #ffd900fe;
     margin-top: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.5;
 }
 

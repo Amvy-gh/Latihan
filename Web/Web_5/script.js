@@ -15,6 +15,21 @@ function createStars() {
     }
 }
 
+function validateLeverage() {
+    let input = document.getElementById("leverage");
+    
+    // Hapus semua karakter selain angka
+    input.value = input.value.replace(/\D/g, "");
+
+    let value = parseInt(input.value, 10);
+
+    if (isNaN(value) || value < 1) {
+        input.value = 1;
+    } else if (value > 125) {
+        input.value = 125;
+    }
+}
+
 // Ambil nilai tukar USD ke IDR
 async function fetchExchangeRate() {
     try {
@@ -22,11 +37,15 @@ async function fetchExchangeRate() {
         const data = await response.json();
         exchangeRate = data.rates.IDR;
         document.getElementById("rate").innerText = `1 USD = Rp ${exchangeRate.toLocaleString("id-ID")}`;
+        
+        // 🔥 Setelah kurs termuat, pastikan ulang perhitungan leverage
+        calculateLeverage();
     } catch (error) {
         console.error("Gagal mengambil nilai tukar:", error);
         document.getElementById("rate").innerText = "🛰️ Koneksi Terputus!";
     }
 }
+
 
 // Format angka
 function formatNumber(number) {
@@ -63,7 +82,9 @@ function convertUSD2() {
     }
 
     calculatePercentage();
+    calculateLeverage(); // 🔥 Panggil leverage otomatis
 }
+
 
 // Hitung kenaikan berdasarkan persentase
 function calculatePercentage() {
@@ -86,6 +107,7 @@ function calculatePercentage() {
 function calculateLeverage() {
     let usdElement = document.getElementById("usd2");
     let leverageElement = document.getElementById("leverage");
+
     formatInput(usdElement);
     formatInput(leverageElement);
 
@@ -94,6 +116,13 @@ function calculateLeverage() {
 
     const leverageResultElement = document.getElementById("leverage-result");
     const leverageWarningElement = document.getElementById("leverage-warning");
+
+    // Tunggu sampai exchangeRate ada
+    if (!exchangeRate || exchangeRate <= 0) {
+        leverageResultElement.innerText = "Total Exposure: Rp 0";
+        leverageWarningElement.innerText = "🚨 Kurs belum dimuat!";
+        return;
+    }
 
     if (leverage < 1) leverage = 1;
     if (leverage > 125) leverage = 125;
@@ -111,7 +140,7 @@ function calculateLeverage() {
     document.getElementById("increase-result").dataset.base = leveragedAmount;
     calculatePercentage();
 
-    // Hitung risiko likuidasi
+    // Perhitungan Risiko Likuidasi
     let assetPrice = usdAmount * exchangeRate;
     let liquidationRisk = (100 / leverage).toFixed(2);
     let liquidationPriceLong = assetPrice * (1 - (liquidationRisk / 100));
